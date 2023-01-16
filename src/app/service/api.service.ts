@@ -11,7 +11,7 @@ const httpOptions = {
 })
 
 export class ApiService { 
-  private apiUrl = '';
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 

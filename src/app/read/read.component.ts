@@ -16,6 +16,7 @@ export class ReadComponent implements OnInit {
   ngOnInit() {
     this.apiService.get(this.endpoint).subscribe((data) => {
       this.items = data;
+      alert(data);
     });
   }
 }
