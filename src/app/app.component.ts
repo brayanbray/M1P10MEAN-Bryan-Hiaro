@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from './service/auth.service';
+import { AuthService } from '../service/auth.service';
+// import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-root',
@@ -27,4 +28,8 @@ export class AppComponent {
   logout() {
     this.authService.logout();
   }
+
+  // ngOnInit() {
+  //   alert(this.apiService.get(''));
+  // }
 }
