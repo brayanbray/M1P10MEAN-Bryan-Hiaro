@@ -1,5 +1,5 @@
 import { Component,Input, OnInit } from '@angular/core';
-import { ApiService } from '../service/api.service';
+import { ApiService } from 'src/service/api.service';
 
 @Component({
   selector: 'app-read',
