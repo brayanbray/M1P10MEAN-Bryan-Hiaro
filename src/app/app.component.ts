@@ -30,7 +30,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    let res = this.apiService.get('');
-    console.log(JSON.stringify(res));
+    this.apiService.get('').subscribe(data => {
+      console.log(JSON.stringify(data));
+    });
   }
 }
