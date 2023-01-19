@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../service/auth.service';
-// import { ApiService } from '../service/api.service';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService,public apiService: ApiService) {}
 
   title = 'm1p10mean-bryan-hiaro';
   currentPage = 'home';
@@ -29,7 +29,8 @@ export class AppComponent {
     this.authService.logout();
   }
 
-  // ngOnInit() {
-  //   alert(this.apiService.get(''));
-  // }
+  ngOnInit() {
+    let res = this.apiService.get('');
+    console.log(JSON.stringify(res));
+  }
 }
