@@ -10,6 +10,7 @@ import { CreateComponent } from './components/create/create.component';
 import { ReadComponent } from './components/read/read.component';
 import { UpdateComponent } from 'src/update/update.component';
 import { DeleteComponent } from './components/delete/delete.component';
+import { InscriptionComponent } from './components/inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DeleteComponent } from './components/delete/delete.component';
     ReadComponent,
     UpdateComponent,
     DeleteComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,
