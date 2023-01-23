@@ -11,6 +11,8 @@ import { ReadComponent } from './components/read/read.component';
 import { UpdateComponent } from 'src/update/update.component';
 import { DeleteComponent } from './components/delete/delete.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
+import { StatistiqueComponent } from './components/statistique/statistique.component';
+import { VoitureComponent } from './components/voiture/voiture.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
     UpdateComponent,
     DeleteComponent,
     InscriptionComponent,
+    StatistiqueComponent,
+    VoitureComponent,
   ],
   imports: [
     BrowserModule,
