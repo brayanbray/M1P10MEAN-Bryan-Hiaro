@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ApiService } from 'src/service/api.service';
+import { ApiService } from 'src/controller/api.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,5 +17,5 @@ export class LoginComponent {
     this.password = '';
     this.error = '';
   }
-
+  
 }
