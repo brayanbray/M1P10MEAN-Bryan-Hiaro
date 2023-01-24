@@ -5,25 +5,22 @@ import { ApiService } from '../service/api.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(public authService: AuthService,public apiService: ApiService) {}
+  constructor(public authService: AuthService, public apiService: ApiService) {}
   // title = 'm1p10mean-bryan-hiaro';
   currentPage = 'home';
   showHome = this.currentPage == 'home';
   showLogin = this.currentPage == 'login';
   showInscription = this.currentPage == 'inscription';
-  // variable temporaire:
-  userId = '63cfecd8402d5e0797c91754';
 
   ngOnInit() {
-    // this.apiService.get('utilisateurs/nom/Hiaro Nathanael').subscribe(data => {
-    //   this.userId = data._id;
-    //   console.log('this.userId = '+this.userId);
-    // });
+    this.apiService
+      .get('utilisateurs/nom/Hiaro Nathanael')
+      .subscribe((data) => localStorage.setItem('userId', data._id));
   }
-  
+
   // onDataEvent(data: string) {
   //   this.currentPage = data == 'home' ? data : 'login'
   //   this.showHome = this.currentPage == 'home'
@@ -39,5 +36,4 @@ export class AppComponent {
   logout() {
     this.authService.logout();
   }
-
 }

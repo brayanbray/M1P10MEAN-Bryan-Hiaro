@@ -1,0 +1,43 @@
+<div class="content-wrapper">
+    <div class="col-lg-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Listes de réparations</h4>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Début</th>
+                  <th>Fin</th>
+                  <!-- <th>Déja payé</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reparation of reparations">
+                  <td>{{ reparation.description }}</td>
+                  <td>{{ reparation.dateDebut }}</td>
+                  <td>{{ reparation.dateFin }}</td>
+                  <!-- <span [ngSwitch]="reparation.statut">
+                    <td *ngSwitchCase="'Disponible'">
+                      <label class="badge badge-success">Disponible</label>
+                    </td>
+                    <td *ngSwitchCase="'Déposé'">
+                      <label class="badge badge-info">Déposé</label>
+                    </td>
+                    <td *ngSwitchCase="'Réparé'">
+                      <label class="badge badge-warning">Réparé</label>
+                    </td>
+                    <td *ngSwitchCase="'En réparation'">
+                      <label class="badge badge-danger">En réparation</label>
+                    </td>
+                  </span> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
