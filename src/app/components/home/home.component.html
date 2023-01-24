@@ -217,7 +217,7 @@
         
         <!-- ICI  -->
         <app-statistique *ngSwitchCase="'statistique'"></app-statistique>
-        <app-voiture *ngSwitchCase="'voiture'"></app-voiture>
+        <app-voiture *ngSwitchCase="'voiture'" [userId]="userId"></app-voiture>
 
         <!-- partial:partials/_footer.html -->
         <footer class="footer">

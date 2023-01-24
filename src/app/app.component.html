@@ -1,7 +1,6 @@
-<app-home *ngIf="showHome"></app-home>
+<app-home *ngIf="showHome" [userId]="userId"></app-home>
 <app-login *ngIf="showLogin"></app-login>
 <app-inscription *ngIf="showInscription"></app-inscription>
-
 
 <!-- <button (click)="login()" *ngIf="!authService.isLoggedIn">Login</button>
 <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button> -->
