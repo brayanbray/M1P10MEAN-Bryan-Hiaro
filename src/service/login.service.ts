@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class LoginService {
-  constructor(private http: HttpClient) { }
+  constructor(private apiService: ApiService) { }
 
   login(email: string, mdp: string) {
-    return this.http.post('/utilisateur/loginProcess', { email, mdp }, { responseType: 'text' });
+    let retour; 
+    this.apiService.post('utilisateur/loginProcess', { email, mdp }).subscribe(data => {
+      retour = data;
+    });
+    console.log(retour);
+    return retour;
   }
 }
