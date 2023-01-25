@@ -1,43 +1,73 @@
 <div class="content-wrapper">
-    <div class="col-lg-6 grid-margin stretch-card">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Listes de réparations</h4>
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Description</th>
-                  <th>Début</th>
-                  <th>Fin</th>
-                  <!-- <th>Déja payé</th> -->
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let reparation of reparations">
-                  <td>{{ reparation.description }}</td>
-                  <td>{{ reparation.dateDebut }}</td>
-                  <td>{{ reparation.dateFin }}</td>
-                  <!-- <span [ngSwitch]="reparation.statut">
-                    <td *ngSwitchCase="'Disponible'">
-                      <label class="badge badge-success">Disponible</label>
-                    </td>
-                    <td *ngSwitchCase="'Déposé'">
-                      <label class="badge badge-info">Déposé</label>
-                    </td>
-                    <td *ngSwitchCase="'Réparé'">
-                      <label class="badge badge-warning">Réparé</label>
-                    </td>
-                    <td *ngSwitchCase="'En réparation'">
-                      <label class="badge badge-danger">En réparation</label>
-                    </td>
-                  </span> -->
-                </tr>
-              </tbody>
-            </table>
-          </div>
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Listes de réparations</h4>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Début</th>
+                <th>Progression</th>
+                <th>Fin</th>
+                <th>Déja payé</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let reparation of reparations">
+                <td>{{ reparation.description }}</td>
+                <td>{{ reparation.dateDebut | date : "dd-MM-YYYY" }}</td>
+                <td>{{ reparation.dateFin | date : "dd-MM-YYYY" }}</td>
+                <td style="width: 15%">
+                  <div class="progress">
+                    <div
+                      [ngClass]="getClass(reparation.color)"
+                      role="progressbar"
+                      [ngStyle]="{'width': reparation.percent}"
+                      aria-valuenow="50"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </td>
+                <span [ngSwitch]="reparation.paye">
+                  <td *ngSwitchCase="true">
+                    <label class="badge badge-success">Payé</label>
+                  </td>
+                  <td *ngSwitchCase="false">
+                    <label class="badge badge-danger">Non payé</label>
+                  </td>
+                </span>
+                <td>
+                  <button class="btn btn-light" (click)="onShowDetails()">
+                    Afficher les détails
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
-  
+  <div class="col-lg-3 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Réparation</h5>
+        {{reparations[0]}}
+        <p class="card-text">Voiture : REP</p>
+        <!-- <p class="card-text">Description : {{ rep.description}}</p>
+        <p class="card-text">Date de début : {{ rep.dateDebut | date}}</p>
+        <p class="card-text">Date de fin : {{ rep.dateFin | date}}</p>
+        <p class="card-text">Payé : {{ rep.paye}}</p>
+        <div *ngFor="let detail of rep.details">
+          <p class="card-text">Description : {{detail.description}}</p>
+          <p class="card-text">Montant : {{detail.montant}}</p>
+          <p class="card-text">Statut : {{detail.statut}}</p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

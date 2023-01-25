@@ -1,10 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ApiService } from 'src/service/api.service';
 import { Router } from '@angular/router';
 import { tap, catchError } from 'rxjs/operators';
 const bcrypt = require('bcrypt');
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/service/login.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   async onSubmit(form: NgForm){
     this.mdp = bcrypt.hashSync(this.mdp, bcrypt.genSaltSync(10));
     console.log( this.loginService.login(this.email, this.mdp));
+    // this.message = this.loginService.login(this.email, this.mdp); nisy erreur dia ncommenteko kely aloha
   }
 
 
