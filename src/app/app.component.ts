@@ -16,9 +16,9 @@ export class AppComponent {
   showInscription = this.currentPage == 'inscription';
 
   ngOnInit() {
-    // this.apiService
-    //   .get('utilisateurs/nom/Hiaro Nathanael')
-    //   .subscribe((data) => localStorage.setItem('userId', data._id));
+    this.apiService
+      .get('utilisateurs/nom/Hiaro Nathanael')
+      .subscribe((data) => localStorage.setItem('userId', data._id));
   }
 
   // onDataEvent(data: string) {
