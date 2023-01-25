@@ -10,6 +10,7 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
 import { StatistiqueComponent } from './components/statistique/statistique.component';
 import { VoitureComponent } from './components/voiture/voiture.component';
 import { ReparationComponent } from './components/reparation/reparation.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReparationComponent } from './components/reparation/reparation.componen
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
