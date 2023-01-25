@@ -1,9 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ApiService } from 'src/service/api.service';
-import { Router } from '@angular/router';
-import { tap, catchError } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/service/login.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   async onSubmit(form: NgForm){
-    this.message = this.loginService.login(this.email, this.mdp);
+    // this.message = this.loginService.login(this.email, this.mdp); nisy erreur dia ncommenteko kely aloha
   }
 
 

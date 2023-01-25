@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { ApiService } from '../service/api.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { ApiService } from '../service/api.service';
 export class AppComponent {
   constructor(public authService: AuthService, public apiService: ApiService) {}
   // title = 'm1p10mean-bryan-hiaro';
-  currentPage = 'login';
+  currentPage = 'home';
   showHome = this.currentPage == 'home';
   showLogin = this.currentPage == 'login';
   showInscription = this.currentPage == 'inscription';

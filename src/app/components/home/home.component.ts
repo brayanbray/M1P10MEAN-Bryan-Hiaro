@@ -1,5 +1,4 @@
-import { Input } from '@angular/core';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'app-home',

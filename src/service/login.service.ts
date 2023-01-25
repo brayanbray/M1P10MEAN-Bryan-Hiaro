@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class LoginService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   login(email: string, mdp: string) {
-    return this.http.post('/utilisateur/loginProcess', { email, mdp }, { responseType: 'text' });
+    return this.http.post(
+      '/utilisateur/loginProcess',
+      { email, mdp },
+      { responseType: 'text' }
+    );
   }
 }
