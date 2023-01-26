@@ -5,7 +5,7 @@
         <div class="card-body">
           <h4 class="card-title">Listes de réparations</h4>
           <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover text-muted">
               <thead>
                 <tr>
                   <th>Description</th>
@@ -19,10 +19,10 @@
               </thead>
               <tbody>
                 <tr *ngFor="let reparation of reparations">
-                  <td (click)="onShowDetails(reparation._id)">{{ reparation.description }}</td>
-                  <td (click)="onShowDetails(reparation._id)">{{ reparation.dateDebut | date : "dd-MM-YYYY" }}</td>
-                  <td (click)="onShowDetails(reparation._id)">{{ reparation.dateFin | date : "dd-MM-YYYY" }}</td>
-                  <td (click)="onShowDetails(reparation._id)" style="width: 15%">
+                  <td style="font-size: 12px !important" (click)="onShowDetails(reparation._id)">{{ reparation.description }}</td>
+                  <td style="font-size: 12px !important" (click)="onShowDetails(reparation._id)">{{ reparation.dateDebut | date : "dd-MM-YYYY" }}</td>
+                  <td style="font-size: 12px !important" (click)="onShowDetails(reparation._id)">{{ reparation.dateFin | date : "dd-MM-YYYY" }}</td>
+                  <td style="font-size: 12px !important" (click)="onShowDetails(reparation._id)" style="width: 15%">
                     <div class="progress">
                       <div
                         [ngClass]="getClass(reparation.color)"
@@ -35,10 +35,10 @@
                     </div>
                   </td>
                   <span (click)="onShowDetails(reparation._id)" [ngSwitch]="reparation.paye">
-                    <td *ngSwitchCase="true">
+                    <td style="font-size: 12px !important" *ngSwitchCase="true">
                       <label class="badge badge-success">Payé</label>
                     </td>
-                    <td *ngSwitchCase="false">
+                    <td style="font-size: 12px !important" *ngSwitchCase="false">
                       <label class="badge badge-danger">Non payé</label>
                     </td>
                   </span>
@@ -76,12 +76,12 @@
               style="margin-bottom: 10px; line-height: 15px !important"
             >
               <div class="row">
-                <div class="col-md-6 col-6">
+                <div class="col-md-7 col-7">
                   <span class="text-muted">
                     <small>{{ detail.description }}</small>
                   </span>
                 </div>
-                <div class="col-md-6 col-6 text-right">
+                <div class="col-md-5 col-5 text-right">
                   <span class="text-muted">
                     <small>Montant : {{ detail.montant }}</small>
                   </span>
