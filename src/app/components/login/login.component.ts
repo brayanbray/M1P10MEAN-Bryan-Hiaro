@@ -1,7 +1,5 @@
 import { ApiService } from 'src/service/api.service';
-import { Router } from '@angular/router';
-import { tap, catchError } from 'rxjs/operators';
-const bcrypt = require('bcrypt');
+const bcrypt = require('crypto-js');
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/service/login.service';
 import { Component, OnInit } from '@angular/core';

@@ -1,72 +1,97 @@
 <div class="content-wrapper">
-  <div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Listes de réparations</h4>
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th>Début</th>
-                <th>Progression</th>
-                <th>Fin</th>
-                <th>Déja payé</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let reparation of reparations">
-                <td>{{ reparation.description }}</td>
-                <td>{{ reparation.dateDebut | date : "dd-MM-YYYY" }}</td>
-                <td>{{ reparation.dateFin | date : "dd-MM-YYYY" }}</td>
-                <td style="width: 15%">
-                  <div class="progress">
-                    <div
-                      [ngClass]="getClass(reparation.color)"
-                      role="progressbar"
-                      [ngStyle]="{'width': reparation.percent}"
-                      aria-valuenow="50"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </td>
-                <span [ngSwitch]="reparation.paye">
-                  <td *ngSwitchCase="true">
-                    <label class="badge badge-success">Payé</label>
+  <div class="row">
+    <div class="col-lg-8 grid-margin stretch-card">
+      <div class="card" style="border-radius: 20px">
+        <div class="card-body">
+          <h4 class="card-title">Listes de réparations</h4>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>
+                    Début&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
+                  </th>
+                  <th>Progression</th>
+                  <th>Fin</th>
+                  <th>Paiement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reparation of reparations">
+                  <td (click)="onShowDetails(reparation._id)">{{ reparation.description }}</td>
+                  <td (click)="onShowDetails(reparation._id)">{{ reparation.dateDebut | date : "dd-MM-YYYY" }}</td>
+                  <td (click)="onShowDetails(reparation._id)">{{ reparation.dateFin | date : "dd-MM-YYYY" }}</td>
+                  <td (click)="onShowDetails(reparation._id)" style="width: 15%">
+                    <div class="progress">
+                      <div
+                        [ngClass]="getClass(reparation.color)"
+                        role="progressbar"
+                        [ngStyle]="{ width: reparation.percent }"
+                        aria-valuenow="50"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
                   </td>
-                  <td *ngSwitchCase="false">
-                    <label class="badge badge-danger">Non payé</label>
-                  </td>
-                </span>
-                <td>
-                  <button class="btn btn-light" (click)="onShowDetails()">
-                    Afficher les détails
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  <span (click)="onShowDetails(reparation._id)" [ngSwitch]="reparation.paye">
+                    <td *ngSwitchCase="true">
+                      <label class="badge badge-success">Payé</label>
+                    </td>
+                    <td *ngSwitchCase="false">
+                      <label class="badge badge-danger">Non payé</label>
+                    </td>
+                  </span>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Réparation</h5>
-        {{reparations[0]}}
-        <p class="card-text">Voiture : REP</p>
-        <!-- <p class="card-text">Description : {{ rep.description}}</p>
-        <p class="card-text">Date de début : {{ rep.dateDebut | date}}</p>
-        <p class="card-text">Date de fin : {{ rep.dateFin | date}}</p>
-        <p class="card-text">Payé : {{ rep.paye}}</p>
-        <div *ngFor="let detail of rep.details">
-          <p class="card-text">Description : {{detail.description}}</p>
-          <p class="card-text">Montant : {{detail.montant}}</p>
-          <p class="card-text">Statut : {{detail.statut}}</p>
-        </div> -->
+    <div class="col-lg-4 grid-margin stretch-card">
+      <div class="card" style="border-radius: 20px">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center">
+            Détails de la réparation
+          </h5>
+          <p style="text-align: center" class="card-text">
+            Voiture :
+            <span class="text-muted">
+              <small>{{ voiture.marque }} {{ voiture.modele }}</small>
+            </span>
+          </p>
+          <p style="text-align: center" class="card-text">
+            Immatriculation :
+            <span>
+              <small>{{ voiture.immatriculation }}</small>
+            </span>
+          </p>
+          <p style="text-align: center" class="card-text">
+            <u>Réparations</u> :
+          </p>
+          <ul class="">
+            <li
+              *ngFor="let detail of details"
+              style="margin-bottom: 10px; line-height: 15px !important"
+            >
+              <div class="row">
+                <div class="col-md-6 col-6">
+                  <span>
+                    <small>{{ detail.description }}</small>
+                  </span>
+                </div>
+                <div class="col-md-6 col-6 text-right">
+                  <span>
+                    <small>Montant : {{ detail.montant }}</small>
+                  </span>
+                  <p class="card-text" style="margin-top: -5px !important"></p>
+                    <button [ngClass]="detail.class">{{detail.statut}}</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
