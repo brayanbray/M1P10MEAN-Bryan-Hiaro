@@ -10,7 +10,8 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
 import { StatistiqueComponent } from './components/statistique/statistique.component';
 import { VoitureComponent } from './components/voiture/voiture.component';
 import { ReparationComponent } from './components/reparation/reparation.component';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AjoutDetailModalComponent } from './components/ajout-detail-modal/ajout-detail-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +22,16 @@ import { FormsModule } from '@angular/forms';
     StatistiqueComponent,
     VoitureComponent,
     ReparationComponent,
+    AjoutDetailModalComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule, 
-    FormsModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
