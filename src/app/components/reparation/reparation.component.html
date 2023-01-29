@@ -12,17 +12,38 @@
                   <th>
                     Début&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
                   </th>
-                  <th>Fin&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;</th>
+                  <th>
+                    Fin&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
+                  </th>
                   <th>Progression</th>
                   <th>Paiement</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let reparation of reparations">
-                  <td style="font-size: 12px !important" (click)="onShowDetails(reparation._id)">{{ reparation.description }}</td>
-                  <td style="font-size: 12px !important" (click)="onShowDetails(reparation._id)">{{ reparation.dateDebut | date : "dd-MM-YYYY" }}</td>
-                  <td style="font-size: 12px !important" (click)="onShowDetails(reparation._id)">{{ reparation.dateFin | date : "dd-MM-YYYY" }}</td>
-                  <td style="font-size: 12px !important" (click)="onShowDetails(reparation._id)" style="width: 15%">
+                  <td
+                    style="font-size: 12px !important"
+                    (click)="onShowDetails(reparation._id)"
+                  >
+                    {{ reparation.description }}
+                  </td>
+                  <td
+                    style="font-size: 12px !important"
+                    (click)="onShowDetails(reparation._id)"
+                  >
+                    {{ reparation.dateDebut | date : "dd-MM-YYYY" }}
+                  </td>
+                  <td
+                    style="font-size: 12px !important"
+                    (click)="onShowDetails(reparation._id)"
+                  >
+                    {{ reparation.dateFin | date : "dd-MM-YYYY" }}
+                  </td>
+                  <td
+                    style="font-size: 12px !important"
+                    (click)="onShowDetails(reparation._id)"
+                    style="width: 15%"
+                  >
                     <div class="progress">
                       <div
                         [ngClass]="getClass(reparation.color)"
@@ -34,11 +55,17 @@
                       ></div>
                     </div>
                   </td>
-                  <span (click)="onShowDetails(reparation._id)" [ngSwitch]="reparation.paye">
+                  <span
+                    (click)="onShowDetails(reparation._id)"
+                    [ngSwitch]="reparation.paye"
+                  >
                     <td style="font-size: 12px !important" *ngSwitchCase="true">
                       <label class="badge badge-success">Payé</label>
                     </td>
-                    <td style="font-size: 12px !important" *ngSwitchCase="false">
+                    <td
+                      style="font-size: 12px !important"
+                      *ngSwitchCase="false"
+                    >
                       <label class="badge badge-danger">Non payé</label>
                     </td>
                   </span>
@@ -72,7 +99,7 @@
           </p>
           <ul class="">
             <li
-              *ngFor="let detail of details;let last = last"
+              *ngFor="let detail of details; let last = last"
               style="margin-bottom: 10px; line-height: 15px !important"
             >
               <div class="row">
@@ -80,35 +107,65 @@
                   <span class="text-muted">
                     <small>{{ detail.description }}</small>
                   </span>
-                  <br><br><br>
-                  <b style="margin-top:500px !important" *ngIf="last">Total = {{ total }}</b>
+                  <br /><br /><br />
+                  <b style="margin-top: 500px !important" *ngIf="last"
+                    >Total = {{ total }}</b
+                  >
                 </div>
                 <div class="col-md-5 col-5 text-right">
                   <span class="text-muted">
                     <small>Montant : {{ detail.montant }}</small>
                   </span>
                   <p class="card-text" style="margin-top: -5px !important"></p>
-                    <button [ngClass]="detail.class" (click)="clickStatus(detail._id)">{{detail.statut}}</button>
+                  <button
+                    [ngClass]="detail.class"
+                    (click)="clickStatus(detail._id)"
+                  >
+                    {{ detail.statut }}
+                  </button>
                 </div>
               </div>
-              <div style="margin-top: 6px" class="row" *ngIf="detail.affiche && detail.next">
+              <div
+                style="margin-top: 6px"
+                class="row"
+                *ngIf="detail.affiche && detail.next"
+              >
                 <div class="col-md-3 col-3 text-left">
-                  <button class="btn btn-xs btn-info" (click)="annuler(repair)">Annuler</button>
+                  <button class="btn btn-xs btn-info" (click)="annuler(repair)">
+                    Annuler
+                  </button>
                 </div>
-                <div class="col-md-9 col-9 text-right" (click)="next(repair,detail._id,detail.next)">
-                  <button class="btn btn-xs btn-info">Passer le statut en {{detail.next}}</button>
+                <div
+                  class="col-md-9 col-9 text-right"
+                  (click)="next(repair, detail._id, detail.next)"
+                >
+                  <button class="btn btn-xs btn-info">
+                    Passer le statut en {{ detail.next }}
+                  </button>
                 </div>
               </div>
             </li>
             <li style="list-style-type: none !important">
               <div class="row">
                 <div class="col-md-5 col-5 text-left">
-                  <!-- <button (click)="onAjout(voiture._id)" class="btn btn-xs btn-primary">Ajouter</button> -->
+                  <button
+                    (click)="showModal(repair)"
+                    class="btn btn-xs btn-primary"
+                  >
+                    Ajouter
+                  </button>
                 </div>
                 <div class="col-md-7 col-7 text-right">
-                  <button class="btn btn-xs btn-primary">Valider pour sortie</button>
+                  <button
+                    class="btn btn-xs btn-primary"
+                    *ngIf="validable"
+                    (click)="showConfirmation(repair)"
+                  >
+                    Valider pour sortie
+                  </button>
                 </div>
-              </div></li>
+              </div>
+            </li>
           </ul>
         </div>
       </div>

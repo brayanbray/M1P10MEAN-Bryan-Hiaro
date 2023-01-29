@@ -19,4 +19,9 @@ export class VoitureComponent {
       this.voitures = data;
     });
   }
+  
+  deposer() {
+    
+  }
+
 }
