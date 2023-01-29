@@ -15,20 +15,20 @@
             </thead>
             <tbody>
               <tr *ngFor="let voiture of voitures">
-                <td>{{ voiture.marque }}</td>
-                <td>{{ voiture.modele }}</td>
-                <td>{{ voiture.immatriculation }}</td>
+                <td (click)="deposer(voiture._id,voiture.statut)">{{ voiture.marque }}</td>
+                <td (click)="deposer(voiture._id,voiture.statut)">{{ voiture.modele }}</td>
+                <td (click)="deposer(voiture._id,voiture.statut)">{{ voiture.immatriculation }}</td>
                 <span [ngSwitch]="voiture.statut">
-                  <td *ngSwitchCase="'Disponible'">
+                  <td (click)="deposer(voiture._id,voiture.statut)" *ngSwitchCase="'Disponible'">
                     <label class="badge badge-success">Disponible</label>
                   </td>
-                  <td *ngSwitchCase="'Déposé'">
+                  <td (click)="deposer(voiture._id,voiture.statut)" *ngSwitchCase="'Déposé'">
                     <label class="badge badge-warning">Déposé</label>
                   </td>
-                  <td *ngSwitchCase="'Réparé'">
+                  <td (click)="deposer(voiture._id,voiture.statut)" *ngSwitchCase="'Réparé'">
                     <label class="badge badge-info">Réparé</label>
                   </td>
-                  <td *ngSwitchCase="'En réparation'">
+                  <td (click)="deposer(voiture._id,voiture.statut)" *ngSwitchCase="'En réparation'">
                     <label class="badge badge-danger">En réparation</label>
                   </td>
                 </span>

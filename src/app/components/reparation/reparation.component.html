@@ -19,31 +19,22 @@
                   <th>Paiement</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr *ngFor="let reparation of reparations">
-                  <td
-                    style="font-size: 12px !important"
-                    (click)="onShowDetails(reparation._id)"
-                  >
+              <tbody
+                cdkDropList
+                [cdkDropListData]="reparations"
+                (cdkDropListDropped)="drop($event)"
+              >
+                <tr *ngFor="let reparation of reparations" cdkDrag>
+                  <td style="font-size: 12px !important">
                     {{ reparation.description }}
                   </td>
-                  <td
-                    style="font-size: 12px !important"
-                    (click)="onShowDetails(reparation._id)"
-                  >
+                  <td style="font-size: 12px !important">
                     {{ reparation.dateDebut | date : "dd-MM-YYYY" }}
                   </td>
-                  <td
-                    style="font-size: 12px !important"
-                    (click)="onShowDetails(reparation._id)"
-                  >
+                  <td style="font-size: 12px !important">
                     {{ reparation.dateFin | date : "dd-MM-YYYY" }}
                   </td>
-                  <td
-                    style="font-size: 12px !important"
-                    (click)="onShowDetails(reparation._id)"
-                    style="width: 15%"
-                  >
+                  <td style="font-size: 12px !important" style="width: 15%">
                     <div class="progress">
                       <div
                         [ngClass]="getClass(reparation.color)"
@@ -55,10 +46,7 @@
                       ></div>
                     </div>
                   </td>
-                  <span
-                    (click)="onShowDetails(reparation._id)"
-                    [ngSwitch]="reparation.paye"
-                  >
+                  <span [ngSwitch]="reparation.paye">
                     <td style="font-size: 12px !important" *ngSwitchCase="true">
                       <label class="badge badge-success">Payé</label>
                     </td>
@@ -159,7 +147,7 @@
                   <button
                     class="btn btn-xs btn-primary"
                     *ngIf="validable"
-                    (click)="showConfirmation(repair)"
+                    (click)="showConfirmation(voiture._id,repair)"
                   >
                     Valider pour sortie
                   </button>

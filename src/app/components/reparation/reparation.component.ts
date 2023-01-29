@@ -7,6 +7,7 @@ import {
 } from '@angular/material/dialog';
 import { AjoutDetailModalComponent } from '../ajout-detail-modal/ajout-detail-modal.component';
 import { ConfirmerSortieComponent } from '../confirmer-sortie/confirmer-sortie.component';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-reparation',
@@ -16,7 +17,6 @@ import { ConfirmerSortieComponent } from '../confirmer-sortie/confirmer-sortie.c
 export class ReparationComponent {
   userId: string | null = '';
   reparations: any[] = [];
-  repairs: any[] = [];
   details: any[] = [];
   voiture: any = {};
   total: Number = 0;
@@ -38,7 +38,6 @@ export class ReparationComponent {
         : localStorage.getItem('userId');
     this.apiService.get('reparations').subscribe((data) => {
       this.reparations = data;
-      this.repairs = data;
       this.reparations.forEach((e) => {
         let totalRepairs = e.details.length;
         let repairsFinished = 0;
@@ -56,6 +55,12 @@ export class ReparationComponent {
     });
   }
 
+  drop(event: CdkDragDrop<any[]>) {
+    if (!event.isPointerOverContainer ) {
+      this.setDetail(this.reparations[event.previousIndex]._id);
+    }
+  }
+
   setDetail(repair: String) {
     let index = this.reparations.map((e) => e._id).indexOf(repair);
     this.details = this.reparations[index].details;
@@ -71,17 +76,16 @@ export class ReparationComponent {
       if (e.statut == 'En attente') e.next = 'En cours';
       else if (e.statut == 'En cours') e.next = 'Fini';
     });
-    this.validable = true;
-    if (this.details.map(e => e.statut).every( e => e == 'Fini')) this.validable = undefined;
     this.repair = repair;
     this.voiture = this.reparations[index].voiture;
+    this.validable = undefined;
+    if (this.voiture.statut == 'En réparation' && this.details.map(e => e.statut).every( e => e == 'Fini')) this.validable = true;
   }
 
-  validerSorti(id: String) {
-    this.apiService.put('voitures/sortie/id=' + id, {}).subscribe((d) => {
+  async validerSorti(id: String,rep:String) {
+    await this.apiService.put('voitures/sortie/id=' + id, {id:rep}).subscribe((d) => {
       this.apiService.get('reparations').subscribe((data) => {
         this.reparations = data;
-        this.repairs = data;
         this.reparations.forEach((e) => {
           let totalRepairs = e.details.length;
           let repairsFinished = 0;
@@ -96,7 +100,7 @@ export class ReparationComponent {
           e.percent = e.percent + '%';
         });
         this.setDetail(
-          this.reparations[this.reparations.map((e) => e._id).indexOf(id)]._id
+          this.reparations[this.reparations.map((e) => e._id).indexOf(this.repair)]._id
         );
       });
     });
@@ -116,7 +120,7 @@ export class ReparationComponent {
     });
   }
   
-  async showConfirmation(idid: String) {
+  async showConfirmation(idid: String,rep:String) {
     this.details.forEach(element => element.affiche = false);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -124,11 +128,10 @@ export class ReparationComponent {
     const dialogRef = this.dialog.open(ConfirmerSortieComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(async (data) => {
       if (data.confirm) {
-        alert('alert');
+        await this.validerSorti(idid,rep);
       }
     });
   }
-
 
   async onAjout(id: String, desc: string, montant: Number) {
     await this.apiService
@@ -140,7 +143,6 @@ export class ReparationComponent {
       .subscribe((data) => {
         this.apiService.get('reparations').subscribe((data) => {
           this.reparations = data;
-          this.repairs = data;
           this.reparations.forEach((e) => {
             let totalRepairs = e.details.length;
             let repairsFinished = 0;
@@ -180,7 +182,6 @@ export class ReparationComponent {
       .subscribe((d) => {
         this.apiService.get('reparations').subscribe((data) => {
           this.reparations = data;
-          this.repairs = data;
           this.reparations.forEach((e) => {
             let totalRepairs = e.details.length;
             let repairsFinished = 0;
@@ -208,9 +209,5 @@ export class ReparationComponent {
 
   getClass(param: string) {
     return 'progress-bar bg-' + param;
-  }
-
-  onShowDetails(id: string) {
-    this.setDetail(id);
   }
 }

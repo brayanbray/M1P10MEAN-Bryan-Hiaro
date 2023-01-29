@@ -1,0 +1,12 @@
+<div style="float: right; background-color: aqua; height: 200px; width: 200px" cdkDropList><h1>{{con}}</h1></div>
+<div>
+  <div class="example-container">
+    <p>dklakda</p>
+    <table>dklakda</table>
+    <div cdkDropList [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)" class="example-list">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>
+        {{ item.n }}
+      </div>
+    </div>
+  </div>
+</div>

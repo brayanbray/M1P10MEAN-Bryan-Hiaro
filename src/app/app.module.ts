@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,8 +16,8 @@ import { VoitureComponent } from './components/voiture/voiture.component';
 import { ReparationComponent } from './components/reparation/reparation.component';
 import { AjoutDetailModalComponent } from './components/ajout-detail-modal/ajout-detail-modal.component';
 import { ConfirmerSortieComponent } from './components/confirmer-sortie/confirmer-sortie.component';
-import { DeposerComponent } from './deposer/deposer.component';
-
+import { DeposerComponent } from './components/deposer/deposer.component';
+import { DragdropComponent } from './components/dragdrop/dragdrop.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { DeposerComponent } from './deposer/deposer.component';
     AjoutDetailModalComponent,
     ConfirmerSortieComponent,
     DeposerComponent,
+    DragdropComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { DeposerComponent } from './deposer/deposer.component';
     FormsModule,
     MatDialogModule,
     ReactiveFormsModule,
+    DragDropModule
   ],
   providers: [{ provide: MAT_DIALOG_DATA, useValue: '' },MatDialog,MatDialogConfig],
   bootstrap: [AppComponent],
