@@ -10,7 +10,15 @@
                             </div>
                             <h4>Diagnostiquez et réparez en quelques clics!</h4>
                             <h6 class="font-weight-light">Connectez vous.</h6>
+<<<<<<< Updated upstream
                             <form class="pt-3">
+=======
+                            <div *ngIf="message.length != 0" class="alert alert-danger" role="alert">
+                                    {{message}}
+                            </div>
+
+                            <form #loginForm="ngForm" (submit)="onSubmit(loginForm)" class="pt-3" >
+>>>>>>> Stashed changes
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
                                         placeholder="Username">
@@ -28,7 +36,7 @@
                                 </div>
 
                                 <div class="text-center mt-4 font-weight-light">
-                                    Vous n'avez pas encore de compte? <a href="register.html" class="text-primary">Créer un compte</a>
+                                    Vous n'avez pas encore de compte? <a  href="#" class="text-primary" (click)="redirect('inscription')">Créer un compte</a>
                                 </div>
                             </form>
                         </div>
