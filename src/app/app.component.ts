@@ -9,8 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor(public authService: AuthService, public apiService: ApiService) {}
-  // title = 'm1p10mean-bryan-hiaro';
-  currentPage = 'login';
+  currentPage = 'home';
   showHome = this.currentPage == 'home';
   showLogin = this.currentPage == 'login';
   showInscription = this.currentPage == 'inscription';

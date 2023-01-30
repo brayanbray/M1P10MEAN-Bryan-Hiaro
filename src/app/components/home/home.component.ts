@@ -9,7 +9,7 @@ export class HomeComponent {
   userId: string | null = null;
   // @Output() DataEvent = new EventEmitter<string>();
   // @Output() currPage = new EventEmitter<string>();
-  currentPage = 'statistique';
+  currentPage = 'reparation';
 
   ngAfterViewInit() {
     this.userId = localStorage.getItem('userId') == null ? null : localStorage.getItem('userId');
