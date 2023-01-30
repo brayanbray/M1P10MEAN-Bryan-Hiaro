@@ -14,7 +14,6 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
 import { StatistiqueComponent } from './components/statistique/statistique.component';
 import { VoitureComponent } from './components/voiture/voiture.component';
 import { ReparationComponent } from './components/reparation/reparation.component';
-import { FormsModule } from '@angular/forms';
 
 import { AjoutDetailModalComponent } from './components/ajout-detail-modal/ajout-detail-modal.component';
 import { ConfirmerSortieComponent } from './components/confirmer-sortie/confirmer-sortie.component';
@@ -38,8 +37,6 @@ import { ModalVoitureComponent } from './components/modal-voiture/modal-voiture.
     BrowserModule,
     HttpClientModule,
     AppRoutingModule, 
-    FormsModule
-    AppRoutingModule,
     FormsModule,
     MatDialogModule,
     ReactiveFormsModule,

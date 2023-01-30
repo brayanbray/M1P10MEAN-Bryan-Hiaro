@@ -30,6 +30,7 @@
     "@angular/cli": "~15.0.5",
     "@angular/compiler-cli": "^15.0.0",
     "@ngtools/webpack": "^15.1.1",
+    "@types/crypto-js": "^4.1.1",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
