@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 <app-home *ngIf="showHome" ></app-home>
 <app-login *ngIf="showLogin" (pageChange)="changePage($event)" ></app-login>
 <app-inscription *ngIf="showInscription" (pageChange)="changePage($event)"></app-inscription>
+=======
+<app-home *ngIf="showHome" (dataEvent)="onDataEvent($event)"></app-home>
+<app-login *ngIf="showLogin"></app-login>
+>>>>>>> parent of 2262573 (login et inscription)
 
 <!-- <button (click)="login()" *ngIf="!authService.isLoggedIn">Login</button>
 <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button> -->
