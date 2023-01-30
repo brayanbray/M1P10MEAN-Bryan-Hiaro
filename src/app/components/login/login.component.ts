@@ -5,7 +5,6 @@ import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/service/login.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { InscriptionComponent } from '../inscription/inscription.component';
-import * as crypto from 'crypto-js';
 import { AppComponent } from 'src/app/app.component';
 import { catchError } from 'rxjs/operators';
 
