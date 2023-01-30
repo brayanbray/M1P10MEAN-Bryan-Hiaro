@@ -1,40 +1,37 @@
-import { Component } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { ApiService } from '../service/api.service';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(public authService: AuthService,public apiService: ApiService) {}
-
-  title = 'm1p10mean-bryan-hiaro';
+  @Output() pageChange = new EventEmitter<string>();
+  // title = 'm1p10mean-bryan-hiaro';
   currentPage = 'login';
   showHome = this.currentPage == 'home';
   showLogin = this.currentPage == 'login';
   showInscription = this.currentPage == 'inscription';
 
-  
-  onDataEvent(data: string) {
-    this.currentPage = data == 'home' ? data : 'login'
-    this.showHome = this.currentPage == 'home'
-    this.showLogin = this.currentPage == 'login'
-    this.showInscription = this.currentPage == 'inscription'
+  constructor(public authService: AuthService, public apiService: ApiService) {}
+  ngOnInit() {
   }
 
-  login() {
-    this.authService.login();
+  changePage(pageName: string) {
+    this.currentPage = pageName;
+    this.showHome = this.currentPage == 'home';
+    this.showLogin = this.currentPage == 'login';
+    this.showInscription = this.currentPage == 'inscription';
+    this.pageChange.emit(pageName);
   }
+  // onDataEvent(data: string) {
+  //   this.currentPage = data == 'home' ? data : 'login'
+  //   this.showHome = this.currentPage == 'home'
+  //   this.showLogin = this.currentPage == 'login'
+  //   this.showInscription = this.currentPage == 'inscription'
 
-  logout() {
-    this.authService.logout();
-  }
-
-  // ngOnInit() {
-  //   this.apiService.get('').subscribe(data => {
-  //     console.log(JSON.stringify(data));
-  //   });
+  //         (dataEvent)="onDataEvent($event)" in view
   // }
 }

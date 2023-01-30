@@ -1,7 +1,6 @@
-<app-home *ngIf="showHome" (dataEvent)="onDataEvent($event)"></app-home>
-<app-login *ngIf="showLogin"></app-login>
-<app-inscription *ngIf="showInscription"></app-inscription>
-
+<app-home *ngIf="showHome" ></app-home>
+<app-login *ngIf="showLogin" (pageChange)="changePage($event)" ></app-login>
+<app-inscription *ngIf="showInscription" (pageChange)="changePage($event)"></app-inscription>
 
 <!-- <button (click)="login()" *ngIf="!authService.isLoggedIn">Login</button>
 <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button> -->
