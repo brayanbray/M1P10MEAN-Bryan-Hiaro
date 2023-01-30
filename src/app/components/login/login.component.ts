@@ -1,6 +1,5 @@
 import { ApiService } from 'src/service/api.service';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/service/login.service';
@@ -9,15 +8,12 @@ import { InscriptionComponent } from '../inscription/inscription.component';
 import * as crypto from 'crypto-js';
 import { AppComponent } from 'src/app/app.component';
 import { catchError } from 'rxjs/operators';
-=======
->>>>>>> parent of 1176314 (login inscription)
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-<<<<<<< HEAD
 export class LoginComponent implements OnInit {
   @Output() pageChange = new EventEmitter<string>();
   email: string;
@@ -25,19 +21,10 @@ export class LoginComponent implements OnInit {
   message: string;
 
   constructor(apiService: ApiService, private loginService: LoginService, private http: HttpClient, private router: Router, private app: AppComponent) {
-=======
-export class LoginComponent {
-  email: string;
-  password: string;
-  error: string;
-  constructor(apiService : ApiService) {
-    console.log(apiService.get(''));
->>>>>>> parent of 1176314 (login inscription)
     this.email = '';
     this.mdp = '';
     this.message = '';
   }
-<<<<<<< HEAD
   ngOnInit(): void {}
   async onSubmit(form: NgForm){
    // let hashed = crypto.SHA256(this.mdp).toString();
@@ -67,7 +54,4 @@ export class LoginComponent {
     this.pageChange.emit(page);
   }
 
-=======
-  
->>>>>>> parent of 1176314 (login inscription)
 }
