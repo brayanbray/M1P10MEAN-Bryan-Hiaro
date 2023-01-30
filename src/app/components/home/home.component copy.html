@@ -1,0 +1,81 @@
+
+<div class="container-scroller">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="navbar-brand-wrapper d-flex justify-content-center">
+        <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
+        <h3>Garage</h3>
+        </div>  
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <ul class="navbar-nav mr-lg-4 w-100">
+        <li class="nav-item nav-search d-none d-lg-block w-100">
+            <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="search">
+                <i class="mdi mdi-magnify"></i>
+                </span>
+            </div>
+            <input type="text" class="form-control" placeholder="Intitulé" aria-label="search" aria-describedby="search">
+            </div>
+        </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" style="font-size:25px" href="#" data-toggle="dropdown" id="profileDropdown">
+            <i style="color:rgb(77,131,255)" class="mdi mdi-account-circle"></i>
+            <span class="nav-profile-name" style="font-size:15px">Admin</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+            <a class="dropdown-item">
+                <i class="mdi mdi-logout text-primary"></i>
+                Se déconnecter
+            </a>
+            </div>
+        </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+        <span class="mdi mdi-menu"></span>
+        </button>
+    </div>
+    </nav>
+    <div class="container-fluid page-body-wrapper">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#liste1" aria-expanded="false" aria-controls="ui-basic">
+            <i style="color:rgb(77,131,255)" class="mdi mdi-content-paste menu-icon"></i>
+            <span class="menu-title">Garage</span>
+            <i class="menu-arrow"></i>
+            </a>
+            <a class="nav-link" data-toggle="collapse" href="#liste1" aria-expanded="false" aria-controls="ui-basic">
+            <i style="color:rgb(77,131,255)" class="mdi mdi-content-paste menu-icon"></i>
+            <span class="menu-title">NON</span>
+            <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="liste1">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link">Ajouter</a></li>
+                <li class="nav-item"> <a class="nav-link">Voir la liste</a></li>
+                <li class="nav-item"> <a class="nav-link">Rechercher</a></li>
+                <li class="nav-item"> <a class="nav-link">Corbeille</a></li>
+            </ul>
+            </div>
+        </li>
+        </ul>
+    </nav>
+
+
+    <div class="main-panel">
+
+        <!-- <jsp:include page="<%= include %>" /> -->
+        <p (click)='onButtonClick()'>HOME</p>
+    
+    </div>
+
+
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        </div>
+    </footer>
+    </div>
+</div>

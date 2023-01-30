@@ -1,8 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ApiService } from 'src/controller/api.service';
+import { ApiService } from 'src/service/api.service';
 import { Router } from '@angular/router';
-<<<<<<< Updated upstream
-=======
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/service/login.service';
@@ -11,21 +8,12 @@ import { InscriptionComponent } from '../inscription/inscription.component';
 import * as crypto from 'crypto-js';
 import { AppComponent } from 'src/app/app.component';
 import { catchError } from 'rxjs/operators';
->>>>>>> Stashed changes
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-<<<<<<< Updated upstream
-export class LoginComponent {
-  email: string;
-  password: string;
-  error: string;
-  constructor(apiService : ApiService) {
-    console.log(apiService.get(''));
-=======
 export class LoginComponent implements OnInit {
   @Output() pageChange = new EventEmitter<string>();
   email: string;
@@ -33,14 +21,10 @@ export class LoginComponent implements OnInit {
   message: string;
 
   constructor(apiService: ApiService, private loginService: LoginService, private http: HttpClient, private router: Router, private app: AppComponent) {
->>>>>>> Stashed changes
     this.email = '';
-    this.password = '';
-    this.error = '';
+    this.mdp = '';
+    this.message = '';
   }
-<<<<<<< Updated upstream
-  
-=======
   ngOnInit(): void {}
   async onSubmit(form: NgForm){
    // let hashed = crypto.SHA256(this.mdp).toString();
@@ -70,5 +54,4 @@ export class LoginComponent implements OnInit {
     this.pageChange.emit(page);
   }
 
->>>>>>> Stashed changes
 }
