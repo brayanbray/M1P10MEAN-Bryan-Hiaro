@@ -11,7 +11,7 @@ const httpOptions = {
 })
 
 export class ApiService { 
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'bryan---hiaro-node-back.glitch.me/';
 
   constructor(private http: HttpClient) { }
 
