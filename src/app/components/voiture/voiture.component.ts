@@ -6,6 +6,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { DeposerComponent } from '../deposer/deposer.component';
+import { ModalVoitureComponent } from '../modal-voiture/modal-voiture.component';
 @Component({
   selector: 'app-voiture',
   templateUrl: './voiture.component.html',
@@ -35,20 +36,31 @@ export class VoitureComponent {
     this.apiService.get('voitures').subscribe((data) => {
       this.voitures = data;
     });
+    this.apiService.get('utilisateurs/nom/Hiaro Nathanael').subscribe((data) => {
+      this.userId = data._id;
+    });
   }
 
   ajouterVoiture() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    const dialogRef = this.dialog.open(DeposerComponent, dialogConfig);
+    const dialogRef = this.dialog.open(ModalVoitureComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(async (data) => {
       if (data.confirm) {
         await this.apiService
-          .post('voitures/add',{})
+          .post('voitures/add',{
+            modele:data.modele,
+            marque:data.marque,
+            immatriculation:data.immatriculation,
+            utilisateur:this.userId,
+            statut:'Disponible',
+          })
           .subscribe((d) => {
-            this.apiService.get('voitures').subscribe((data) => {
-              this.voitures = data;
+            alert('adada');
+            this.apiService.get('voitures').subscribe((daat) => {
+              alert('adadsddda');
+              this.voitures = daat;
             });
           });
       }
