@@ -9,13 +9,7 @@
                         </div>
                         <h4>Vous êtes nouveau?</h4>
                         <h6 class="font-weight-light">Inscrivez vous pour entretenir vos véhicules!</h6>
-                        <form class="pt-3" #registerForm="ngForm" (submit)="register(registerForm)">
-                            <div *ngIf="message.length != 0" class="alert alert-danger" role="alert">
-                                {{message}}
-                            </div>
-                            <div *ngIf="messageLog.length != 0" class="alert alert-success" role="alert">
-                                {{messageLog}}
-                            </div>
+                        <form class="pt-3">
                             <div class="form-group">
                                 <label>Nom d'utilisateur</label>
                                 <div class="input-group">
@@ -25,7 +19,7 @@
                                         </span>
                                     </div>
                                     <input type="text" class="form-control form-control-lg border-left-0"
-                                        placeholder="Nom d'utilisateur" name="nom" [(ngModel)]="nom">
+                                        placeholder="Nom d'utilisateur">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -37,7 +31,7 @@
                                         </span>
                                     </div>
                                     <input type="email" class="form-control form-control-lg border-left-0"
-                                        placeholder="Email" name="email" [(ngModel)]="email">
+                                        placeholder="Email">
                                 </div>
                             </div>
 
@@ -50,15 +44,16 @@
                                         </span>
                                     </div>
                                     <input type="password" class="form-control form-control-lg border-left-0"
-                                        id="exampleInputPassword" placeholder="Mot de passe" name="mdp" [(ngModel)]="mdp">
+                                        id="exampleInputPassword" placeholder="Mot de passe">
                                 </div>
                             </div>
 
                             <div class="mt-3">
-                                <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit"> S'inscrire</button>
+                                <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+                                    href="../../index.html">S'inscrire</a>
                             </div>
                             <div class="text-center mt-4 font-weight-light">
-                                Vous avez déjà un compte? <a href="#" class="text-primary" (click)="redirect('login')">Se connecter</a>
+                                Vous avez déjà un compte? <a href="login.html" class="text-primary">Se connecter</a>
                             </div>
                         </form>
                     </div>
