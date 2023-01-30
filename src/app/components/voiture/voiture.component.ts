@@ -19,7 +19,7 @@ export class VoitureComponent {
     private dialog: MatDialog,
     private dialogConfig: MatDialogConfig,
     @Inject(MAT_DIALOG_DATA) data: any
-  ) { }
+  ) {}
 
   ngAfterViewInit() {
     this.userId =
@@ -31,33 +31,45 @@ export class VoitureComponent {
     //   .subscribe((data) => {
     //     this.voitures = data;
     //   });
-    
-    this.apiService
-      .get('voitures')
-      .subscribe((data) => {
-        this.voitures = data;
-      });
+
+    this.apiService.get('voitures').subscribe((data) => {
+      this.voitures = data;
+    });
   }
 
-  async deposer(idid: String,stt: String) {
-    if ( stt == 'Disponible' ) {
+  ajouterVoiture() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    const dialogRef = this.dialog.open(DeposerComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(async (data) => {
+      if (data.confirm) {
+        await this.apiService
+          .post('voitures/add',{})
+          .subscribe((d) => {
+            this.apiService.get('voitures').subscribe((data) => {
+              this.voitures = data;
+            });
+          });
+      }
+    });
+  }
+
+  async deposer(idid: String, stt: String) {
+    if (stt == 'Disponible') {
       const dialogConfig = new MatDialogConfig();
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
       const dialogRef = this.dialog.open(DeposerComponent, dialogConfig);
       dialogRef.afterClosed().subscribe(async (data) => {
         if (data.confirm) {
-          await this.apiService.put('voitures/depot/id='+idid,{}).subscribe((data)=>{
-            this.userId =
-              localStorage.getItem('userId') == null
-                ? null
-                : localStorage.getItem('userId');
-            this.apiService
-              .get('utilisateur/voitures/' + this.userId)
-              .subscribe((data) => {
+          await this.apiService
+            .put('voitures/depot/id=' + idid, {})
+            .subscribe((d) => {
+              this.apiService.get('voitures').subscribe((data) => {
                 this.voitures = data;
               });
-          });
+            });
         }
       });
     }

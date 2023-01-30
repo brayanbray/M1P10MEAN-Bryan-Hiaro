@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DragdropComponent } from './dragdrop.component';
+import { ModalVoitureComponent } from './modal-voiture.component';
 
-describe('DragdropComponent', () => {
-  let component: DragdropComponent;
-  let fixture: ComponentFixture<DragdropComponent>;
+describe('ModalVoitureComponent', () => {
+  let component: ModalVoitureComponent;
+  let fixture: ComponentFixture<ModalVoitureComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DragdropComponent ]
+      declarations: [ ModalVoitureComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DragdropComponent);
+    fixture = TestBed.createComponent(ModalVoitureComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

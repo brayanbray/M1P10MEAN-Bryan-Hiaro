@@ -17,7 +17,7 @@ import { ReparationComponent } from './components/reparation/reparation.componen
 import { AjoutDetailModalComponent } from './components/ajout-detail-modal/ajout-detail-modal.component';
 import { ConfirmerSortieComponent } from './components/confirmer-sortie/confirmer-sortie.component';
 import { DeposerComponent } from './components/deposer/deposer.component';
-import { DragdropComponent } from './components/dragdrop/dragdrop.component';
+import { ModalVoitureComponent } from './components/modal-voiture/modal-voiture.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +30,7 @@ import { DragdropComponent } from './components/dragdrop/dragdrop.component';
     AjoutDetailModalComponent,
     ConfirmerSortieComponent,
     DeposerComponent,
-    DragdropComponent,
+    ModalVoitureComponent,
   ],
   imports: [
     BrowserModule,
