@@ -57,9 +57,7 @@ export class VoitureComponent {
             statut:'Disponible',
           })
           .subscribe((d) => {
-            alert('adada');
             this.apiService.get('voitures').subscribe((daat) => {
-              alert('adadsddda');
               this.voitures = daat;
             });
           });
